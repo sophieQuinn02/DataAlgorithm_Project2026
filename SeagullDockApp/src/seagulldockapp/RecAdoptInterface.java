@@ -4,11 +4,17 @@
  */
 package seagulldockapp;
 
-/**
- *
+/*
  * @author Sophie Quinn
  */
-//This is the stack interface
+//This is the stack interface, the code below was sourced 
+//from Hamilton Niculescu's code available on NCI Moodle,
+//Data Structures & Algorithms module, 2026
+
 public interface RecAdoptInterface {
-    
+    public boolean isEmpty();
+    public boolean isFull();
+    public void push(Object newItem);
+    public Object pop();
+    public int size();
 }

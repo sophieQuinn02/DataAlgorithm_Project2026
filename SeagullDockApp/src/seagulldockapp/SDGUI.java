@@ -9,7 +9,7 @@ package seagulldockapp;
  * @author Sophie Quinn
  */
 public class SDGUI extends javax.swing.JFrame {
-    
+    CommonGullSSL myCGull = new CommonGullSSL();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SDGUI.class.getName());
 
     /**
@@ -17,6 +17,7 @@ public class SDGUI extends javax.swing.JFrame {
      */
     public SDGUI() {
         initComponents();
+
     }
 
     /**
@@ -34,14 +35,15 @@ public class SDGUI extends javax.swing.JFrame {
         SeagullList = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         SeagullDetailsBox = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        ChooseGullLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        UpForAdoptionLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         RecAdoptSeagulls = new javax.swing.JList<>();
-        jLabel3 = new javax.swing.JLabel();
+        RecAdoptLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         Messagesbtn = new javax.swing.JButton();
+        Submitbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,9 +62,9 @@ public class SDGUI extends javax.swing.JFrame {
         SeagullDetailsBox.setRows(5);
         jScrollPane1.setViewportView(SeagullDetailsBox);
 
-        jLabel1.setText("Please choose a species of gull:");
+        ChooseGullLabel.setText("Please choose a species of gull:");
 
-        jLabel2.setText("Seagulls up for adoption:");
+        UpForAdoptionLabel.setText("Seagulls up for adoption:");
 
         RecAdoptSeagulls.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -71,58 +73,62 @@ public class SDGUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(RecAdoptSeagulls);
 
-        jLabel3.setText("Recently Adopted Seagulls:");
+        RecAdoptLabel.setText("Recently Adopted Seagulls:");
 
         Messagesbtn.setText("Messages");
+        Messagesbtn.addActionListener(this::MessagesbtnActionPerformed);
+
+        Submitbtn.setText("Submit");
+        Submitbtn.addActionListener(this::SubmitbtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ChooseGullLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addComponent(SeagullList, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(jSeparator1)
+                        .addGap(15, 15, 15)
+                        .addComponent(UpForAdoptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(herringGullbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(commonGullBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RecAdoptLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(SeagullList, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jSeparator2)))
-                .addGap(49, 49, 49))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(herringGullbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(commonGullBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Messagesbtn)
-                        .addGap(89, 89, 89))))
+                        .addGap(80, 80, 80))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(198, 198, 198)
+                .addComponent(Submitbtn)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ChooseGullLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(commonGullBtn)
@@ -134,31 +140,32 @@ public class SDGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(SeagullList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(UpForAdoptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(SeagullList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Submitbtn)
+                        .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(20, 20, 20)
+                        .addComponent(RecAdoptLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(194, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //if the user selects the herring gull option
     private void herringGullbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herringGullbtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_herringGullbtnActionPerformed
 
+    //if the user selects the common gull option
     private void commonGullBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commonGullBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_commonGullBtnActionPerformed
@@ -166,6 +173,14 @@ public class SDGUI extends javax.swing.JFrame {
     private void SeagullListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeagullListActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SeagullListActionPerformed
+
+    private void MessagesbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessagesbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MessagesbtnActionPerformed
+
+    private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SubmitbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,16 +208,17 @@ public class SDGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ChooseGullLabel;
     private javax.swing.JButton Messagesbtn;
+    private javax.swing.JLabel RecAdoptLabel;
     private javax.swing.JList<String> RecAdoptSeagulls;
-    private javax.swing.JTextArea SeagullDetailsBox;
+    public javax.swing.JTextArea SeagullDetailsBox;
     private javax.swing.JComboBox<String> SeagullList;
+    private javax.swing.JButton Submitbtn;
+    private javax.swing.JLabel UpForAdoptionLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton commonGullBtn;
     private javax.swing.JRadioButton herringGullbtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;

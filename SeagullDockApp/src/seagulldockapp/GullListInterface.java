@@ -4,17 +4,20 @@
  */
 package seagulldockapp;
 
-/*
+/**
+ *
  * @author Sophie Quinn
  */
-//This is the queue interface, the code below was sourced 
+
+//This is the singly-linked list interface, the code below was sourced 
 //from Hamilton Niculescu's code available on NCI Moodle,
 //Data Structures & Algorithms module, 2026
-
-public interface MessagesInterface {
+public interface GullListInterface {
+    public void add(int iPosition, Object theElement);
+    public void add(Object theElement);
+    public Object get(int iPosition);
+    public void remove(int iPosition);
     public boolean isEmpty();
     public int size();
-    public Object frontElement();
-    public void enqueue(Object element);
-    public Object dequeue();
+    public void printList();
 }
