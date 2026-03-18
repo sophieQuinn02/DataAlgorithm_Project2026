@@ -9,7 +9,8 @@ package seagulldockapp;
  * @author Sophie Quinn
  */
 public class SDGUI extends javax.swing.JFrame {
-    CommonGullSSL myCGull = new CommonGullSSL();
+    CommonGullSSL myCGull;
+    HerringGullSSL myHGull;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SDGUI.class.getName());
 
     /**
@@ -163,6 +164,7 @@ public class SDGUI extends javax.swing.JFrame {
     //if the user selects the herring gull option
     private void herringGullbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herringGullbtnActionPerformed
         // TODO add your handling code here:
+        SeagullList.setText();
     }//GEN-LAST:event_herringGullbtnActionPerformed
 
     //if the user selects the common gull option
