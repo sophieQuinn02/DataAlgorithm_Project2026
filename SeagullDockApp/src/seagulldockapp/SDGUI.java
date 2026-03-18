@@ -18,7 +18,10 @@ public class SDGUI extends javax.swing.JFrame {
      */
     public SDGUI() {
         initComponents();
-
+            
+        SeagullData data = new SeagullData();
+        CommonGullSSL commonList = data.getCommonGullSSL();
+        HerringGullSSL herringList = data.getHerringGullSSL();
     }
 
     /**
@@ -80,7 +83,6 @@ public class SDGUI extends javax.swing.JFrame {
         Messagesbtn.addActionListener(this::MessagesbtnActionPerformed);
 
         Submitbtn.setText("Submit");
-        Submitbtn.addActionListener(this::SubmitbtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,13 +165,22 @@ public class SDGUI extends javax.swing.JFrame {
 
     //if the user selects the herring gull option
     private void herringGullbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herringGullbtnActionPerformed
-        // TODO add your handling code here:
-        SeagullList.setText();
+       
+       // SeagullList.addItem("test");
+         
+       // SeagullList.setSelectedItem("test");
+         
+       // SeagullDetailsBox.setText("    Herring Seagull.");
     }//GEN-LAST:event_herringGullbtnActionPerformed
 
     //if the user selects the common gull option
     private void commonGullBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commonGullBtnActionPerformed
-        // TODO add your handling code here:
+        
+        SeagullList.addItem("test");
+         
+        SeagullList.setSelectedItem("test");
+         
+        SeagullDetailsBox.setText("testing common!!!.");
     }//GEN-LAST:event_commonGullBtnActionPerformed
 
     private void SeagullListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeagullListActionPerformed
@@ -179,10 +190,6 @@ public class SDGUI extends javax.swing.JFrame {
     private void MessagesbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessagesbtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MessagesbtnActionPerformed
-
-    private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SubmitbtnActionPerformed
 
     /**
      * @param args the command line arguments
