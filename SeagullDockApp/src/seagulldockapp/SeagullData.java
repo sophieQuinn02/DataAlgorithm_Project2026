@@ -16,8 +16,7 @@ public class SeagullData {
         CommonGullSSL myCGull = new CommonGullSSL();
         HerringGullSSL myHGull = new HerringGullSSL();
         
-        
-        { 
+        public SeagullData(){ 
         //Common Gull SSL STARTS HERE
         myCGull.add(1, "Bob");
         myCGull.add(2, "Sandy");
@@ -50,10 +49,12 @@ public class SeagullData {
         System.out.println("Is the CommonGull list empty? " + myHGull.isEmpty());
         //Herring Gull SSL ENDS HERE
     }
-    public SeagullData getCommonGullSSL(){
-        return SeagullData; 
+    //Getters sent to GUI
+    public CommonGullSSL getCommonGullSSL() {
+        return myCGull;
     }
-    public SeagullData getHerringGullSSL(){
-        return SeagullData;
+
+    public HerringGullSSL getHerringGullSSL() {
+        return myHGull;
     }
 }

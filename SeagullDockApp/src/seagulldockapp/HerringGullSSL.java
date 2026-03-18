@@ -20,21 +20,21 @@ public class HerringGullSSL implements GullListInterface {
         prevNode = null;
     }
 
-    public class GlNode {
+    public class GullNode {
 
     private Object element;
-    private GlNode next;
+    private GullNode next;
 
-    public GlNode(Object inElement, GlNode inNode) {
+    public GullNode(Object inElement, GullNode inNode) {
         element = inElement;
         next = inNode;
     }
 
-    public GlNode getNext() {
+    public GullNode getNext() {
         return next;
     }
 
-    public void setNext(GlNode inNode) {
+    public void setNext(GullNode inNode) {
         next = inNode;
     }
 
@@ -50,11 +50,11 @@ public class HerringGullSSL implements GullListInterface {
     public String toString() {
         return element.toString();
     }
-}
-    private GlNode head;
+    }
+    private GullNode head;
     private int iSize;
-    private GlNode currNode;
-    private GlNode prevNode;
+    private GullNode currNode;
+    private GullNode prevNode;
 
 
     @Override
@@ -76,11 +76,11 @@ public class HerringGullSSL implements GullListInterface {
     public void add(int iPosition, Object theElement) {
         //special case of adding at the head of the list (on the first position)
         if (iPosition == 1) {
-            GlNode newNode = new GlNode(theElement, head);
+            GullNode newNode = new GullNode(theElement, head);
             head = newNode;
         } else {
             setCurrent(iPosition);
-            GlNode newNode = new GlNode(theElement, currNode);
+            GullNode newNode = new GullNode(theElement, currNode);
             prevNode.setNext(newNode);
         }
         //as a new one was added the size counter must be incremented by 1
@@ -90,7 +90,7 @@ public class HerringGullSSL implements GullListInterface {
     //add an element at the end of the list (on the last position)
     @Override
     public void add(Object theElement) {
-        GlNode newNode = new GlNode(theElement, null);
+        GullNode newNode = new GullNode(theElement, null);
         if (head == null) {
             head = newNode;
         } else {
@@ -135,7 +135,7 @@ public class HerringGullSSL implements GullListInterface {
     // printlist() method prints out the content of the list                                  
     @Override
     public void printList() {
-        GlNode tempNode = head;
+        GullNode tempNode = head;
         while (tempNode != null) {
             System.out.println(tempNode.toString());
             tempNode = tempNode.getNext();

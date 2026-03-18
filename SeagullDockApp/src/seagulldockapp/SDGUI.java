@@ -4,13 +4,16 @@
  */
 package seagulldockapp;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sophie Quinn
  */
 public class SDGUI extends javax.swing.JFrame {
-    CommonGullSSL myCGull;
-    HerringGullSSL myHGull;
+    CommonGullSSL myCGull = new CommonGullSSL();
+    HerringGullSSL myHGull = new HerringGullSSL();
+    //incomingMessages = new ArrayList<>();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SDGUI.class.getName());
 
     /**
@@ -18,10 +21,10 @@ public class SDGUI extends javax.swing.JFrame {
      */
     public SDGUI() {
         initComponents();
-            
-        SeagullData data = new SeagullData();
-        CommonGullSSL commonList = data.getCommonGullSSL();
-        HerringGullSSL herringList = data.getHerringGullSSL();
+        //implementing the SeagullData method
+        SeagullData gull = new SeagullData();
+        CommonGullSSL commonGList = gull.getCommonGullSSL();
+        HerringGullSSL herringGList = gull.getHerringGullSSL();
     }
 
     /**
