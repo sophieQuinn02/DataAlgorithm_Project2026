@@ -11,52 +11,63 @@ package seagulldockapp;
 //this is the entire singly-linked list for the Herring Gull,
 //code was taken and modified from Hamilton Niculescu's code 
 //available on NCI Moodle, Data Structures & Algorithms module, 2026
+//comments are my own
+
+//commongullSSL uses the interface
 public class HerringGullSSL implements GullListInterface {
-    
-    public HerringGullSSL(){
-        head = null;
-        iSize = 0;
-        currNode = null;
-        prevNode = null;
-    }
-
-    public class GullNode {
-
-    private Object element;
-    private GullNode next;
-
-    public GullNode(Object inElement, GullNode inNode) {
-        element = inElement;
-        next = inNode;
-    }
-
-    public GullNode getNext() {
-        return next;
-    }
-
-    public void setNext(GullNode inNode) {
-        next = inNode;
-    }
-
-    public Object getElement() {
-        return element;
-    }
-
-    public void setElement(Object inElement) {
-        element = inElement;
-    }
-
-    @Override
-    public String toString() {
-        return element.toString();
-    }
-    }
     private GullNode head;
     private int iSize;
     private GullNode currNode;
     private GullNode prevNode;
+    
+
+    //method for the nodes within the SSL
+    public class GullNode {
+        private Object element; //creates the object and element
+        private GullNode next; //creates the pointer to the next node
+
+        public GullNode(Object inElement, GullNode inNode) {
+            element = inElement;//data for the element
+            next = inNode;//the node's pointer
+        }
+
+        //selects and returns the node after the currently selected one
+        public GullNode getNext() {
+            return next;
+        }
+
+        //sets the node after the currently selected one to be connected to each other
+        public void setNext(GullNode inNode) {
+            next = inNode;
+        }
+
+        //selects and returns an element from a node
+        public Object getElement() {
+            return element;
+        }
+
+        //changes the element in the selected object
+        public void setElement(Object inElement) {
+            element = inElement;
+        }
+
+        //toString allows the objects to be converted to strings
+        @Override
+        public String toString() {
+            return element.toString();
+        }
+    }
+    
+        //main attributes of the HerringGullSSL
+    public HerringGullSSL(){
+        head = null;//data of the head/first node
+        iSize = 10;//number of objects in the SSL
+        currNode = head;//current position of the node
+        prevNode = null;//data of the previous node
+    }
 
 
+    //checks if the SSL size is equal to 0, if it is return true, else false
     @Override
     public boolean isEmpty() {
         if (iSize == 0) {
@@ -66,6 +77,7 @@ public class HerringGullSSL implements GullListInterface {
         }
     }
 
+    //checks the size of the SSL and returns the number of objects
     @Override
     public int size() {
         return iSize;

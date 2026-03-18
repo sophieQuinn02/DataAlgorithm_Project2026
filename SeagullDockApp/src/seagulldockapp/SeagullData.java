@@ -11,11 +11,13 @@ package seagulldockapp;
 //this is the data within both singly-linked lists,
 //code was taken and modified from Hamilton Niculescu's code 
 //available on NCI Moodle, Data Structures & Algorithms module, 2026
+//comments are my own
 public class SeagullData {
      //creates both singly-linked lists for the 2 seagull types
         CommonGullSSL myCGull = new CommonGullSSL();
         HerringGullSSL myHGull = new HerringGullSSL();
         
+        //stores both SSLs in a method
         public SeagullData(){ 
         //Common Gull SSL STARTS HERE
         myCGull.add(1, "Bob");
@@ -28,11 +30,13 @@ public class SeagullData {
         myCGull.add(8, "Shady");
         myCGull.add(9, "March");
         myCGull.add(10, "Noah");
+        //checks how many objects are in the list, prints the number of objects
         System.out.println("items in CommonGull: " + myCGull.size());
+        //checks to see if the SSL is empty, returns true if it is, false if not
         System.out.println("Is the CommonGull list empty? " + myCGull.isEmpty());
         //Common Gull SSL ENDS HERE
         
-        System.out.println("***************");
+        System.out.println("***************"); //barrier between SSLs for legibility
         
         //Herring Gull SSL STARTS HERE
         myHGull.add(1, "Darrel");
@@ -45,11 +49,13 @@ public class SeagullData {
         myHGull.add(8, "Ashley");
         myHGull.add(9, "Block");
         myHGull.add(10, "Duke");
+        //checks how many objects are in the list, prints the number of objects
         System.out.println("items in HerringGull: " + myHGull.size());
+        //checks to see if the SSL is empty, returns true if it is, false if not
         System.out.println("Is the CommonGull list empty? " + myHGull.isEmpty());
         //Herring Gull SSL ENDS HERE
     }
-    //Getters sent to GUI
+    //Getters for both SSLs, sent to the GUI
     public CommonGullSSL getCommonGullSSL() {
         return myCGull;
     }

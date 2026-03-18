@@ -8,11 +8,9 @@ package seagulldockapp;
  *
  * @author Sophie Quinn
  */
+//main page of the application, launches the GUI from here
 public class SeagullDockApp {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         //links the GUI ro the main 
         SDGUI mygui = new SDGUI();

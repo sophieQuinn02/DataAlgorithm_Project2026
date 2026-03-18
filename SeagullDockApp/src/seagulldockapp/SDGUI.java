@@ -4,16 +4,16 @@
  */
 package seagulldockapp;
 
-import java.util.ArrayList;
+import java.util.ArrayList;//imports the arraylist
 
 /**
  *
  * @author Sophie Quinn
  */
 public class SDGUI extends javax.swing.JFrame {
-    CommonGullSSL myCGull = new CommonGullSSL();
-    HerringGullSSL myHGull = new HerringGullSSL();
-    //incomingMessages = new ArrayList<>();
+    CommonGullSSL myCGull = new CommonGullSSL(); //imports the CommonGull SSL
+    HerringGullSSL myHGull = new HerringGullSSL();//imports the HerringGull SSL
+    ArrayList incomingMessages = new ArrayList<>();//imports the incomingMessagesQueue
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SDGUI.class.getName());
 
     /**
@@ -168,7 +168,7 @@ public class SDGUI extends javax.swing.JFrame {
 
     //if the user selects the herring gull option
     private void herringGullbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herringGullbtnActionPerformed
-       
+       //I intended for the two radio buttons to switch the 
        // SeagullList.addItem("test");
          
        // SeagullList.setSelectedItem("test");
@@ -187,7 +187,9 @@ public class SDGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_commonGullBtnActionPerformed
 
     private void SeagullListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeagullListActionPerformed
-        // TODO add your handling code here:
+        //I intended for the two radio buttons to switch between the 
+        //two SSLs I created, and once the user selects the seagull they like, 
+        ///it's details would display in the textbox here.
     }//GEN-LAST:event_SeagullListActionPerformed
 
     private void MessagesbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessagesbtnActionPerformed
