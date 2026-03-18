@@ -5,6 +5,7 @@
 package seagulldockapp;
 
 import java.util.ArrayList;//imports the arraylist
+import javax.swing.JOptionPane; //allows JOptionPane
 
 /**
  *
@@ -14,6 +15,7 @@ public class SDGUI extends javax.swing.JFrame {
     CommonGullSSL myCGull = new CommonGullSSL(); //imports the CommonGull SSL
     HerringGullSSL myHGull = new HerringGullSSL();//imports the HerringGull SSL
     ArrayList incomingMessages = new ArrayList<>();//imports the incomingMessagesQueue
+    ArrayList RecentAdoptions = new ArrayList<>();//imports the recentAAdoptionsStack
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SDGUI.class.getName());
 
     /**
@@ -21,10 +23,6 @@ public class SDGUI extends javax.swing.JFrame {
      */
     public SDGUI() {
         initComponents();
-        //implementing the SeagullData method
-        SeagullData gull = new SeagullData();
-        CommonGullSSL commonGList = gull.getCommonGullSSL();
-        HerringGullSSL herringGList = gull.getHerringGullSSL();
     }
 
     /**
@@ -62,7 +60,7 @@ public class SDGUI extends javax.swing.JFrame {
         herringGullbtn.setText("Herring Gull");
         herringGullbtn.addActionListener(this::herringGullbtnActionPerformed);
 
-        SeagullList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SeagullList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         SeagullList.addActionListener(this::SeagullListActionPerformed);
 
         SeagullDetailsBox.setColumns(20);
@@ -74,7 +72,7 @@ public class SDGUI extends javax.swing.JFrame {
         UpForAdoptionLabel.setText("Seagulls up for adoption:");
 
         RecAdoptSeagulls.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Barty", "Soho", "Lilly", "Flop", "Cranky", "Flop2", "AteMyChip", "Sunshine", "Hangry", "BigGuy" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -86,6 +84,7 @@ public class SDGUI extends javax.swing.JFrame {
         Messagesbtn.addActionListener(this::MessagesbtnActionPerformed);
 
         Submitbtn.setText("Submit");
+        Submitbtn.addActionListener(this::SubmitbtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,13 +116,13 @@ public class SDGUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RecAdoptLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)))
+                            .addComponent(RecAdoptLabel))
                         .addGap(60, 60, 60))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Messagesbtn)
+                        .addGap(80, 80, 80))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(198, 198, 198)
@@ -149,7 +148,7 @@ public class SDGUI extends javax.swing.JFrame {
                         .addComponent(UpForAdoptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addComponent(SeagullList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Submitbtn)
@@ -159,8 +158,8 @@ public class SDGUI extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(RecAdoptLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(194, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -168,33 +167,70 @@ public class SDGUI extends javax.swing.JFrame {
 
     //if the user selects the herring gull option
     private void herringGullbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herringGullbtnActionPerformed
-       //I intended for the two radio buttons to switch the 
-       // SeagullList.addItem("test");
+        //I was not able to implement my SSLs to integrate with the GUI, 
+        //I created the display of how the GUI would look once these radio buttons were clicked.
+        
+        //removes all items so they do not stack on top
+        //of each other with multiple radio button clicks
+        SeagullList.removeAllItems();
+        SeagullList.addItem("Seagull #5");
+        SeagullList.addItem("Seagull #6");
+        SeagullList.addItem("Seagull #7");
+        SeagullList.addItem("Seagull #8");
          
-       // SeagullList.setSelectedItem("test");
+        //the default seagull that will appear on the dropdown once this radio button is clicked.
+        SeagullList.setSelectedItem("Seagull #5");
          
-       // SeagullDetailsBox.setText("    Herring Seagull.");
+        //text that displays in the text box at the bottom of the GUI
+        SeagullDetailsBox.setText("     Herring Seagull data will be displayed here,\n     including it's size and name.");
     }//GEN-LAST:event_herringGullbtnActionPerformed
 
     //if the user selects the common gull option
     private void commonGullBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commonGullBtnActionPerformed
+       //I was not able to implement my SSLs to integrate with the GUI, 
+        //I created the display of how the GUI would look once these radio buttons were clicked.
         
-        SeagullList.addItem("test");
+        //removes all items so they do not stack on top
+        //of each other with multiple radio button clicks
+        SeagullList.removeAllItems();
+ 
+        SeagullList.addItem("Seagull #1");
+        SeagullList.addItem("Seagull #2");
+        SeagullList.addItem("Seagull #3");
+        SeagullList.addItem("Seagull #4");
          
-        SeagullList.setSelectedItem("test");
+        //the default seagull that will appear on the dropdown once this radio button is clicked.
+        SeagullList.setSelectedItem("Seagull #1");
          
-        SeagullDetailsBox.setText("testing common!!!.");
+        //text that displays in the text box at the bottom of the GUI
+        SeagullDetailsBox.setText("     Common Seagull data will be displayed here,\n     including it's size and name.");
     }//GEN-LAST:event_commonGullBtnActionPerformed
 
     private void SeagullListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeagullListActionPerformed
-        //I intended for the two radio buttons to switch between the 
-        //two SSLs I created, and once the user selects the seagull they like, 
-        ///it's details would display in the textbox here.
+       
+        //details about the chosen seagull appear in this text box.
+        
     }//GEN-LAST:event_SeagullListActionPerformed
 
     private void MessagesbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessagesbtnActionPerformed
-        // TODO add your handling code here:
+        
+        //creates a popup window to display messages from the queue to the user
+        JOptionPane.showMessageDialog(null, "Welcome to your messages! No new messages yet..");
+        
     }//GEN-LAST:event_MessagesbtnActionPerformed
+
+    private void SubmitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitbtnActionPerformed
+
+        //once this button is pressed, the chosen seagull would
+        //be removed from their respective SSL and placed inside
+        //the RecentlyAdopted stack.
+     if (SeagullDetailsBox.getText().isEmpty()) {
+        //if the text box has nothing, there will be no popup window
+    } else {//if there is text, the window will popup
+        JOptionPane.showMessageDialog(null, "Submitted!");
+    }
+
+    }//GEN-LAST:event_SubmitbtnActionPerformed
 
     /**
      * @param args the command line arguments
