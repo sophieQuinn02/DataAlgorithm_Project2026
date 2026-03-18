@@ -83,58 +83,58 @@ public class HerringGullSSL implements GullListInterface {
         return iSize;
     }
 
-    //add an element to the list, assume the iPosition is in the correct range
+    //add an element to the list if the first position is selected(head),
+    //otherwise create a node where the user selects aside from the head
     @Override
     public void add(int iPosition, Object theElement) {
-        //special case of adding at the head of the list (on the first position)
-        if (iPosition == 1) {
-            GullNode newNode = new GullNode(theElement, head);
-            head = newNode;
-        } else {
-            setCurrent(iPosition);
-            GullNode newNode = new GullNode(theElement, currNode);
-            prevNode.setNext(newNode);
+        if (iPosition == 1) { //if the head is selected
+            GullNode newNode = new GullNode(theElement, head);//create a new node at the head
+            head = newNode;//created new head node
+        } else {    //otherwise
+            setCurrent(iPosition);//set position to any other node than head
+            GullNode newNode = new GullNode(theElement, currNode);//create a new node
+            prevNode.setNext(newNode);//connect the node to the previous one
         }
-        //as a new one was added the size counter must be incremented by 1
+        //after creating a new node, the SSL will increase by one
         iSize = iSize + 1;
     }
 
-    //add an element at the end of the list (on the last position)
+    //creates a node on the last position, indicated by the pointer being null
     @Override
     public void add(Object theElement) {
-        GullNode newNode = new GullNode(theElement, null);
-        if (head == null) {
+        GullNode newNode = new GullNode(theElement, null);//creates a new node at the end of the SSL
+        if (head == null) {//if the head is null, create a new head
             head = newNode;
         } else {
             setCurrent(iSize);
-            currNode.setNext(newNode);
+            currNode.setNext(newNode);//links the node to the previous one
         }
-        iSize = iSize + 1;
+        iSize = iSize + 1;//the SSL increases by one
     }
 
+    //selects the requested position and returns the node
     @Override
     public Object get(int iPosition) {
         setCurrent(iPosition);
         return currNode;
     }
 
+    //removes the current node, if the head is selected, 
+    //the next node becomes the new head.
     @Override
     public void remove(int iPosition) {
-        // special case for removing the head of the list / first node.
         if (iPosition == 1) {
             head = head.getNext();
-        } else {
-            // find the previous and current nodes
-            setCurrent(iPosition);
+        } else {                //otherwise, change the previous node
+            setCurrent(iPosition);//to connect to the node after the removed one
             prevNode.setNext(currNode.getNext());
         }
-        // as one node was removed the size counter must be decremented by 1
+        //reduces the SSL by one as a node was removed
         iSize = iSize - 1;
     }
 
+    //sets the current node to the head, and the previous node to the position before
     private void setCurrent(int iPosition) {
-        // sets currNode to the node at position specified by index
-        // sets prevNode to the node previous to currNode
         int iCount;
         prevNode = null;
         currNode = head;
@@ -144,7 +144,7 @@ public class HerringGullSSL implements GullListInterface {
         }
     }
 
-    // printlist() method prints out the content of the list                                  
+    //this prints the SSL's contents out                                
     @Override
     public void printList() {
         GullNode tempNode = head;

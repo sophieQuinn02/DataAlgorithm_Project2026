@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package seagulldockapp;
-import java.util.*; //allows arraylist to be created
+import java.util.ArrayList; //allows arraylist to be created
 /**
  *
  * @author Sophie Quinn

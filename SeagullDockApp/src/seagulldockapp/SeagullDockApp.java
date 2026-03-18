@@ -15,6 +15,6 @@ public class SeagullDockApp {
         //links the GUI ro the main 
         SDGUI mygui = new SDGUI();
         mygui.setVisible(true);
-        
+ 
     }
 }
